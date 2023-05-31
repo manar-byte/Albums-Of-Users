@@ -1,0 +1,16 @@
+<div class="container">
+  <div *ngIf="user else falseBlock"
+    class="bg-primary d-flex justify-content-around"
+    style="width: 100%; height: 50px; color: white"
+  >
+    <p>{{user.name}}</p>
+    <p>{{user.email}}<br>{{user.phone}}</p>
+    <p>Address<br>{{user.address.street}} street</p>
+  </div>
+  <br />
+
+  <ng-template #falseBlock><h1></h1>Loading...</ng-template>
+
+  <h6 *ngIf="user" align="center" style="color: red;">{{user.name}}'s' Albums</h6>
+  <hr />
+</div>

@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="bg-primary d-flex justify-content-between" style="width: 100%; height: 50px">
+    <p class="ms-5" style="color: white">Users</p>
+    <button (click)="open(content)" type="button" class="me-5 btn btn-light btn-sm" style="height: 80%">
+      + Add User
+    </button>
+  </div>
+
+  <table class="ms-5 table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Number</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of users">
+        <td>{{ u.name }}</td>
+        <td><a routerLink="/users/{{u.id}}">{{ u.email }}</a></td>
+        <td>{{ u.phone }}</td>
+        <td>
+          {{ u.address.street }}, {{ u.address.suite }}, {{ u.address.city }}
+        </td>
+        <td><button type="button" class="btn btn-primary">Edit</button></td>
+        <td><button type="button" class="btn btn-light">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New User</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="firstname">Name</label>
+        <div class="input-group">
+          <input id="firstname" class="form-control" >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
