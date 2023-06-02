@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class UsersService {
   constructor(private readonly myClient: HttpClient) {}
 
-  private readonly Base_URL = 'https://jsonplaceholder.typicode.com/users';
+  private readonly Base_URL = 'http://localhost:3000/users';
 
   //requests(methods)=> get users
 

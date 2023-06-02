@@ -32,22 +32,53 @@
 
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">New User</h4>
+    <h4 class="modal-title" id="modal-basic-title">User Information</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <form>
+
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(name.value,email.value,phone.value,city.value,suite.value,street.value)" novalidate>
       <div class="form-group">
-        <label for="firstname">Name</label>
+        <label for="name">Name</label>
         <div class="input-group">
-          <input id="firstname" class="form-control" >
+          <input #name id="name" placeholder="eg: John Doe" class="form-control" required >
         </div>
+
+        <label for="email">Email</label>
+        <div class="input-group">
+          <input #email id="email" placeholder="eg: johndoe@gmail.com" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required >
+        </div>
+
+        <label for="phone">Phone</label>
+        <div class="input-group">
+          <input #phone id="phone" placeholder="eg: 0110494859" class="form-control" required >
+        </div>
+
+        <label for="address">Address</label>
+        <div class="add d-flex">
+         <div class="input-group">
+          <input #city id="City" placeholder="City" class="form-control" required >
+         </div>
+         <div class="input-group">
+          <input #suite id="suite" placeholder="Suite" class="form-control" required >
+         </div>
+         <div class="input-group">
+          <input #street id="street" placeholder="Street" class="form-control" required >
+         </div>
       </div>
+      </div>
+      <br>
+      <div class="border text-center">
+        <button data-dismiss="modal" class="btn btn-info">Submit</button>
+        </div>
     </form>
+
+
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">cancel</button>
   </div>
 </ng-template>
